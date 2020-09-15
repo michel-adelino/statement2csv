@@ -1,5 +1,50 @@
 # statement2csv
-Convert your bank statement PDF to a standard CSV
+
+A secure, client-side web application that converts bank statement PDFs into standardized CSV files. Extract transaction data (dates, descriptions, and amounts) from your bank statements with complete privacy—all processing happens locally in your browser.
+
+## Overview
+
+**statement2csv** is a React-based tool that parses bank statement PDFs and converts them into CSV format for easy import into spreadsheet applications, accounting software, or personal finance tools. The application uses PDF.js to extract text content from PDF files and intelligently parses transaction data, handling various formatting challenges like multi-line descriptions, currency symbols, and date formats.
+
+### Key Features
+
+- **100% Client-Side Processing**: All PDF parsing and CSV generation happens in your browser—your financial data never leaves your device
+- **Automatic Transaction Extraction**: Intelligently identifies and extracts transaction dates, descriptions, and amounts from bank statement PDFs
+- **Date Format Standardization**: Converts various date formats found in statements to a consistent format (MM/DD/YYYY)
+- **Multi-Page Support**: Processes entire bank statements across multiple pages
+- **Currency Handling**: Automatically handles currency symbols and formatting (removes dollar signs, handles commas in amounts)
+- **Foreign Transaction Support**: Parses foreign currency transactions with exchange rate information
+- **One-Click Download**: Generates and downloads CSV files with a single click
+- **No Installation Required**: Runs entirely in your web browser—no server setup or software installation needed
+
+### How It Works
+
+1. **Upload**: Select your bank statement PDF file through the web interface
+2. **Parse**: The application uses PDF.js to extract text content from the PDF
+3. **Extract**: Transaction data is identified using pattern matching (date patterns, transaction rows, balance markers)
+4. **Transform**: Data is cleaned and formatted:
+   - Dates are standardized to MM/DD/YYYY format
+   - Currency symbols and formatting are normalized
+   - Multi-line transaction descriptions are joined
+   - Foreign currency information is preserved
+5. **Export**: A CSV file is generated with columns: Date, Description, Amount
+6. **Download**: The CSV file is automatically downloaded with the same name as your PDF (with .csv extension)
+
+### Output Format
+
+The generated CSV file contains three columns:
+- **Date**: Transaction date in MM/DD/YYYY format
+- **Description**: Transaction description/merchant name
+- **Amount**: Transaction amount (positive for credits, negative for debits)
+
+### Technical Details
+
+- Built with **React** for a modern, responsive user interface
+- Uses **PDF.js** (Mozilla's PDF rendering library) for PDF text extraction
+- Leverages **Moment.js** for date parsing and formatting
+- Processes PDFs entirely in the browser using JavaScript
+- No backend server or API calls required
+- Works offline after initial page load
 
 ## Why this, and [not](https://www.jetconvert.com.au/bankstatements/) [the](https://www.moneythumb.com/shop/pdf2csv-convert-plus/) [alternatives](http://www.statementreader.com/)?
 - This is **free** (and **open-source**).
